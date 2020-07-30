@@ -84,6 +84,8 @@ void planetagraf::actualizar(float dt)
             else {
                 color=1;
             }
+            scene()->removeItem(colliding_items[i]);
+            delete colliding_items[i];
 
         }
     }
@@ -93,5 +95,10 @@ planeta *planetagraf::getEsf()
 {
     // Método para obtener el cuerpo
     return esf;
+}
+
+void planetagraf::setcolor(int color_)
+{
+    color=color_;
 }
 

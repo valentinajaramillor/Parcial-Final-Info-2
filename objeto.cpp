@@ -37,15 +37,4 @@ void objeto::move()
     posy=posy+vely*dt+(0.5)*acy*dt*dt;
 
     setPos(posx,-posy);
-
-    QList<QGraphicsItem *> colliding_items = collidingItems();
-    for(int i = 0, n = colliding_items.size(); i < n; i++){
-        if(typeid(*(colliding_items[i])) == typeid (planetagraf)){
-
-            //remove the both
-            scene()->removeItem(this);
-            //delete both
-            delete this;
-        }
-    }
 }

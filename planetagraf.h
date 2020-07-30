@@ -17,12 +17,13 @@ public:
     void setEscala(float s);
     void actualizar(float dt);
     planeta* getEsf();
+    void setcolor(int color_);
+    int color;
 
 private:
     planeta* esf;
     float escala;
     bool mov;
-    int color;
 
 };
 
