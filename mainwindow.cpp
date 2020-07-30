@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#
 #include <QDebug>
 #include <string>
 #include <fstream>
@@ -28,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setScene(scene);
     ui->centralwidget->adjustSize();
 
+    ui->graphicsView->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+    ui->graphicsView->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+
     timer->stop();
     // Se realiza la conexion del timer con el metodo para actualizar las posiciones
     connect(timer,SIGNAL(timeout()),this,SLOT(actualizar()));
@@ -44,6 +48,9 @@ MainWindow::MainWindow(QWidget *parent)
         cuerpos.at(i)->actualizar(dt);
         scene->addItem(cuerpos.at(i));
     }
+    setFocus();
+
+    timer->start(dt);
 }
 
 MainWindow::~MainWindow()
@@ -88,12 +95,21 @@ void MainWindow::actualizar()
     for(int i=0;i<cuerpos.size();i++){
         cuerpos.at(i)->actualizar(dt);
     }
+
 }
 
-void MainWindow::on_pushButton_clicked()
+
+
+void MainWindow::spawn()
 {
-    // Cuando se presione el botón, comienza a ejecutarse el timer
-    timer->start(dt);
+    //create enemies
+    objeto * objeto_ = new objeto();
+    scene->addItem(objeto_);
 }
 
 
+
+void MainWindow::on_creador_clicked()
+{
+    spawn();
+}

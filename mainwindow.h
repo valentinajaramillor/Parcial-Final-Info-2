@@ -7,6 +7,7 @@
 #include <QFile>
 #include "planeta.h"
 #include "planetagraf.h"
+#include "objeto.h"
 #include <QGraphicsItem>
 
 
@@ -30,10 +31,11 @@ private:
     QList<planetagraf*> cuerpos;
     int opcion;
     float tiempo;
+    void spawn();
 
 private slots:
     void actualizar();
-    void on_pushButton_clicked();
+    void on_creador_clicked();
 };
 
 
