@@ -5,8 +5,8 @@
 
 planeta::planeta(float PX_, float PY_, float VX_, float VY_, float mass, float R_)
 {
-    /* El constructor asigna los valores entregados como los atributos del cuerpo. También, se establece la constante de
-     * gravitación como 1, y las aceleraciones iniciales como 0
+    /* El constructor asigna los valores entregados como los atributos del planeta. También, se establece la constante
+     * de gravitación como 1, y las aceleraciones iniciales como 0
      */
     PX=PX_;
     PY=PY_;
@@ -81,9 +81,9 @@ float planeta::getR()
 
 void planeta::acelerar(float px2_, float py2_, float mass2)
 {
-    /* Este método realiza el cálculo del ángulo del vector director, la distancia del cuerpo al sol, y las aceleraciones
-     * en x y en y del cuerpo. Para esto usa los valores entregados al método, que corresponden a la posición del sol y su
-     * masa
+    /* Este método realiza el cálculo del ángulo del vector director, la distancia del planeta al sol, y las
+     * aceleraciones en x y en y del cuerpo. Para esto usa los valores entregados al método, que corresponden a la
+     * posición del sol y su masa
      */
 
     // Se inicializan los modificadores del signo de las aceleraciones en 1
@@ -101,7 +101,8 @@ void planeta::acelerar(float px2_, float py2_, float mass2)
         else if ((px2_-PX)==0)
             angulo= M_PI/2;
 
-        // Pero si se encuentra en cualquier otro lugar del primer cuadrante, se dejan los signos de la aceleración sin cambio
+        // Pero si se encuentra en cualquier otro lugar del primer cuadrante, se dejan los signos de la aceleración sin
+        //   cambio
         else {
             angulo =atan((py2_-PY)/(px2_-PX));
             signoAX=1;
@@ -109,8 +110,8 @@ void planeta::acelerar(float px2_, float py2_, float mass2)
         }
     }
 
-    // Se continua con el proceso de calculo del angulo y de los signos de las aceleraciones, dependiendo de a que dirección
-    //  apunta el vector director de la aceleración hacia el sol
+    // Se continua con el proceso de calculo del angulo y de los signos de las aceleraciones, dependiendo de a que
+    //     dirección apunta el vector director de la aceleración hacia el sol
     else if ((py2_-PY)>=0 && (px2_-PX)<0){
         angulo =atan((py2_-PY)/abs(px2_-PX));
         signoAX=-1;

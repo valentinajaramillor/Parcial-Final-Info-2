@@ -7,7 +7,7 @@
 planetagraf::planetagraf(float x, float y, float vx, float vy, float m, float r) : escala(0.055)
 {
     {
-        /* El constructor crea el nuevo cuerpo y le asigna el estado de movimiento.
+        /* El constructor crea el nuevo planeta y le asigna el estado de movimiento.
          * También podemos modificar la escala.
          */
         esf=new planeta(x,y,vx,vy,m,r);
@@ -31,7 +31,7 @@ QRectF planetagraf::boundingRect() const
 
 void planetagraf::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    // Método para pintar los circulos de los cuerpos
+    // Método para pintar los circulos de los cuerpos y asignar un color
 
     if (color==1){
         painter->setBrush(Qt::red);
@@ -63,11 +63,12 @@ void planetagraf::setEscala(float s)
 
 void planetagraf::actualizar(float dt)
 {
-    /* Este método actualiza la posición del cuerpo dentro de la escena. Para esto, primero llama los métodos de la clase "Cuerpo"
-     * que calculan todos los datos necesarios para actualizar la posición del cuerpo, pero primero verificando que el cuerpo
-     * si se encuentre en movimiento o no haya colisionado. Luego, mueve el cuerpo en la escena.
-     * Después, se verifica si el cuerpo colisionó con otro cuerpo (usando collidingItems), y si esto sucedió,
-     * se asignan los datos del cuerpo a 0, y se remueve el cuerpo de la escena, para luego cambiar el estado de movimiento a falso
+    /* Este método actualiza la posición del cuerpo dentro de la escena. Para esto, primero llama los métodos de la
+     * clase planeta que calculan todos los datos necesarios para actualizar la posición del cuerpo, pero primero
+     * verificando que el cuerpo si se encuentre en movimiento o no haya colisionado. Luego, mueve el cuerpo en la
+     * escena.
+     * Después, se verifica si el cuerpo colisionó con un objeto (usando collidingItems), y si esto sucedió,
+     * se remueve el objeto de la escena, para luego cambiar el color del planeta
      */
     if (mov==true){
         esf->actualizar(dt);
@@ -93,12 +94,8 @@ void planetagraf::actualizar(float dt)
 
 planeta *planetagraf::getEsf()
 {
-    // Método para obtener el cuerpo
+    // Método para obtener el planeta
     return esf;
 }
 
-void planetagraf::setcolor(int color_)
-{
-    color=color_;
-}
 

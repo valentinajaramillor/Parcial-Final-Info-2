@@ -47,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
     srand (time(NULL));
     cuerpos.append(new planetagraf(0,  5000, -2, 0, 70, 70));
 
-    // Por cada cuerpo en la lista de cuerpos, se crea la opcion en el combobox, se actualiza su posicion y se agrega
+    // Por cada cuerpo en la lista de cuerpos, se actualiza su posicion y se agrega
     //    el cuerpo a la escena
     for(int i=0;i<cuerpos.size();i++){
         cuerpos.at(i)->actualizar(dt);
@@ -69,12 +69,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::actualizar()
 {
-    /* Este método es el respondable de actualizar la información de los planetas, tanto en la interfaz
-    *  como sus posiciones en la escena. Lo que hace es que por cada cuerpo, llama al método interno
-    *  "acelerar" de la clase Cuerpo, para calcular los ángulos, el radio de distancia, y demas información,
-    *  para luego llamar al método "actualizar" de Cuerpograf, que se encarga de mover el cuerpo por la escena
-    *  de acuerdo a las posiciones calculadas con el método interno "actualizar" de la clase Cuerpo.
-    * También, actualiza la información del cuerpo a visualizar en la interfaz.
+    /* Este método es el responsable de actualizar la información de los planetas, tanto en la interfaz
+    *  como sus posiciones en la escena. Lo que hace es que por cada planeta, llama al método interno
+    *  "acelerar" de la clase planeta, para calcular los ángulos, el radio de distancia, y demas información,
+    *  para luego llamar al método "actualizar" de planetagraf, que se encarga de mover el cuerpo por la escena
+    *  de acuerdo a las posiciones calculadas con el método interno "actualizar" de la clase planeta.
     */
 
     // Se va sumando el tiempo transcurrido
@@ -85,7 +84,7 @@ void MainWindow::actualizar()
         timer->stop();
     }
 
-    // Por cada cuerpo, realizamos los cálculos de acuerdo a la información del sol, que se encuentra en la primera
+    // Por cada planeta, realizamos los cálculos de acuerdo a la información del sol, que se encuentra en la primera
     //   posición de la lista de cuerpos
     for (int i=0; i<cuerpos.size();i++){
         for (int j=0; i<cuerpos.size();i++) {
@@ -96,7 +95,7 @@ void MainWindow::actualizar()
         }
     }
 
-    // Finalmente se realiza la actualización de la posición del cuerpo
+    // Finalmente se realiza la actualización de la posición del planeta
     for(int i=0;i<cuerpos.size();i++){
         cuerpos.at(i)->actualizar(dt);
     }
@@ -107,7 +106,7 @@ void MainWindow::actualizar()
 
 void MainWindow::spawn()
 {
-    //create enemies
+    // Se crean los objetos (estrellas) que caen
     objeto * objeto_ = new objeto();
     scene->addItem(objeto_);
 }
@@ -116,5 +115,6 @@ void MainWindow::spawn()
 
 void MainWindow::on_creador_clicked()
 {
+    // Cada vez que se presione el botón de Crear objeto, se crea un objeto
     spawn();
 }

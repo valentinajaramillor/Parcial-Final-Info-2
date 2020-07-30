@@ -8,8 +8,9 @@ objeto::objeto(QGraphicsItem * parent): QObject(), QGraphicsPixmapItem()
     maxac=50;
     minac=2;
 
+    // Se asigna una posición aleatoria
     int random_number1;
-    random_number1 = rand() % 790 - 410;
+    random_number1 = rand() % 790 - 400;
 
     posx=random_number1;
     posy=300;
@@ -18,6 +19,7 @@ objeto::objeto(QGraphicsItem * parent): QObject(), QGraphicsPixmapItem()
     velx=0;
     vely=0;
 
+    // Se asigna una aceleración en y aleatoria
     acy= -1*(rand() % maxac +minac);
 
     //draw the bullet
@@ -39,6 +41,7 @@ void objeto::move()
 
     setPos(posx,-posy);
 
+    // Si el objeto llega al suelo (limite en -290 en y), el objeto rebota al cambiar la velocidad en y al contrario
     if (posy < -290){
         vely=vely*-1;
     }

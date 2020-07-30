@@ -29,7 +29,6 @@ private:
     float h_limit;
     float v_limit;
     QList<planetagraf*> cuerpos;
-    int opcion;
     float tiempo;
     void spawn();
 

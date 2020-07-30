@@ -27,10 +27,10 @@
    <widget class="QPushButton" name="creador">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>355</x>
       <y>610</y>
-      <width>91</width>
-      <height>31</height>
+      <width>90</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">

@@ -14,7 +14,6 @@ class objeto:public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     objeto(QGraphicsItem * parent=0);
-    int tipo;
     float acy;
     float posx, posy, velx, vely,dt;
     int maxac;
