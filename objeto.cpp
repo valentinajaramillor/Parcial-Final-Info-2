@@ -9,7 +9,7 @@ objeto::objeto(QGraphicsItem * parent): QObject(), QGraphicsPixmapItem()
     minac=2;
 
     int random_number1;
-    random_number1 = rand() % 800 - 400;
+    random_number1 = rand() % 790 - 410;
 
     posx=random_number1;
     posy=300;
@@ -32,9 +32,14 @@ objeto::objeto(QGraphicsItem * parent): QObject(), QGraphicsPixmapItem()
 
 void objeto::move()
 {
+
     vely=vely+acy*dt;
     posx=posx+velx*dt;
     posy=posy+vely*dt+(0.5)*acy*dt*dt;
 
     setPos(posx,-posy);
+
+    if (posy < -290){
+        vely=vely*-1;
+    }
 }

@@ -4,7 +4,7 @@
 #include "objeto.h"
 
 
-planetagraf::planetagraf(float x, float y, float vx, float vy, float m, float r) : escala(0.06)
+planetagraf::planetagraf(float x, float y, float vx, float vy, float m, float r) : escala(0.055)
 {
     {
         /* El constructor crea el nuevo cuerpo y le asigna el estado de movimiento.
