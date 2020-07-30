@@ -22,6 +22,7 @@ private:
     planeta* esf;
     float escala;
     bool mov;
+    int color;
 
 };
 

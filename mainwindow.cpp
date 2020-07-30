@@ -14,8 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
     dt=1;  // Se asigna el cambio en el tiempo (delta del tiempo)
 
     // Se asignan los limites visibles del "universo"
-    h_limit=2000;
-    v_limit=1000;
+    h_limit=600;
+    v_limit=600;
 
     tiempo=0; // Inicializo la variable con el tiempo transcurrido
 

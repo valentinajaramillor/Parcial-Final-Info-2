@@ -4,24 +4,22 @@
 
 objeto::objeto(QGraphicsItem * parent): QObject(), QGraphicsPixmapItem()
 {
-    g=-9.8;
+    acy=-9.8;
     dt=0.1;
-    maxvel=100;
-    minvel=10;
+    maxac=50;
+    minac=2;
 
     int random_number1;
     random_number1 = rand() % 600 -300;
-
 
     posx=random_number1;
     posy=300;
     setPos(posx,-posy);
 
-
     velx=0;
-    vely= -1*(rand() % maxvel +minvel);
+    vely=0;
 
-
+    acy= -1*(rand() % maxac +minac);
 
     //draw the bullet
     setPixmap(QPixmap(":/objeto_estrella.png"));
@@ -35,9 +33,9 @@ objeto::objeto(QGraphicsItem * parent): QObject(), QGraphicsPixmapItem()
 
 void objeto::move()
 {
-    vely=vely+g*dt;
+    vely=vely+acy*dt;
     posx=posx+velx*dt;
-    posy=posy+vely*dt+(0.5)*g*dt*dt;
+    posy=posy+vely*dt+(0.5)*acy*dt*dt;
 
     setPos(posx,-posy);
 
@@ -51,9 +49,4 @@ void objeto::move()
             delete this;
         }
     }
-
-//    if(pos().y() + pixmap().height() < 0){
-//        scene()->removeItem(this);
-//        delete this;
-//    }
 }

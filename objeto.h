@@ -15,11 +15,10 @@ class objeto:public QObject, public QGraphicsPixmapItem
 public:
     objeto(QGraphicsItem * parent=0);
     int tipo;
-    float g;
+    float acy;
     float posx, posy, velx, vely,dt;
-    float fric;
-    int maxvel;
-    int minvel;
+    int maxac;
+    int minac;
 
 public slots:
     void move();

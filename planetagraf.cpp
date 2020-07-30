@@ -1,8 +1,10 @@
 #include "planetagraf.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "objeto.h"
 
-planetagraf::planetagraf(float x, float y, float vx, float vy, float m, float r) : escala(0.025)
+
+planetagraf::planetagraf(float x, float y, float vx, float vy, float m, float r) : escala(0.06)
 {
     {
         /* El constructor crea el nuevo cuerpo y le asigna el estado de movimiento.
@@ -11,6 +13,8 @@ planetagraf::planetagraf(float x, float y, float vx, float vy, float m, float r)
         esf=new planeta(x,y,vx,vy,m,r);
         mov=true;
     }
+    srand (time(NULL));
+    color=rand() % 6 + 1;
 }
 
 planetagraf::~planetagraf()
@@ -28,7 +32,26 @@ QRectF planetagraf::boundingRect() const
 void planetagraf::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     // Método para pintar los circulos de los cuerpos
-    painter->setBrush(Qt::darkGreen);
+
+    if (color==1){
+        painter->setBrush(Qt::red);
+    }
+    else if (color==2){
+        painter->setBrush(Qt::blue);
+    }
+    else if (color==3){
+        painter->setBrush(Qt::yellow);
+    }
+    else if (color==4){
+        painter->setBrush(Qt::green);
+    }
+    else if (color==5){
+        painter->setBrush(Qt::magenta);
+    }
+    else if (color==6){
+        painter->setBrush(Qt::cyan);
+    }
+
     painter->drawEllipse(boundingRect());
 }
 
@@ -53,10 +76,15 @@ void planetagraf::actualizar(float dt)
 
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for(int i = 0, n = colliding_items.size(); i < n; i++){
-        if(typeid(*(colliding_items[i])) == typeid (planetagraf)){
-            esf->asignar(0,0,0,0,0,0);
-            scene()->removeItem(this);
-            mov=false;
+        if(typeid(*(colliding_items[i])) == typeid (objeto)){
+
+            if (color<6){
+                color++;
+            }
+            else {
+                color=1;
+            }
+
         }
     }
 }
