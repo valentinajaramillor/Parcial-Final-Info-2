@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     dt=1;  // Se asigna el cambio en el tiempo (delta del tiempo)
 
     // Se asignan los limites visibles del "universo"
-    h_limit=600;
+    h_limit=800;
     v_limit=600;
 
     tiempo=0; // Inicializo la variable con el tiempo transcurrido
@@ -36,10 +36,15 @@ MainWindow::MainWindow(QWidget *parent)
     // Se realiza la conexion del timer con el metodo para actualizar las posiciones
     connect(timer,SIGNAL(timeout()),this,SLOT(actualizar()));
 
+    srand (time(NULL));
     cuerpos.append(new planetagraf(0, 0, 0, 0, 50000, 200));
+    srand (time(NULL));
     cuerpos.append(new planetagraf(-5000, 0, 0, -2, 70, 70));
+    srand (time(NULL));
     cuerpos.append(new planetagraf( 5000, 0, 0, 2, 70, 70));
+    srand (time(NULL));
     cuerpos.append(new planetagraf(0, -5000, 2, 0, 70, 70));
+    srand (time(NULL));
     cuerpos.append(new planetagraf(0,  5000, -2, 0, 70, 70));
 
     // Por cada cuerpo en la lista de cuerpos, se crea la opcion en el combobox, se actualiza su posicion y se agrega

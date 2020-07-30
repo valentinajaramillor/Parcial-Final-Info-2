@@ -4,13 +4,12 @@
 
 objeto::objeto(QGraphicsItem * parent): QObject(), QGraphicsPixmapItem()
 {
-    acy=-9.8;
     dt=0.1;
     maxac=50;
     minac=2;
 
     int random_number1;
-    random_number1 = rand() % 600 -300;
+    random_number1 = rand() % 800 - 400;
 
     posx=random_number1;
     posy=300;
